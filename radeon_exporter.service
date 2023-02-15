@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Exporter for Radeon (AMD) Graphics Cards
+Documentation=github.com/kmulvey/radeon_exporter
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Restart=on-failure
+ExecStart=/opt/radeon_exporter
+
+[Install]
+WantedBy=multi-user.target
