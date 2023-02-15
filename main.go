@@ -16,7 +16,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var deviceNameRegex = regexp.MustCompile("name")
+var deviceNameRegex = regexp.MustCompile("name$")
 
 // https://docs.kernel.org/gpu/amdgpu/thermal.html
 // https://www.kernel.org/doc/html/v5.6/hwmon/lochnagar.html
@@ -63,12 +63,10 @@ func main() {
 
 func findRadeonDevices() ([]path.Entry, error) {
 
-	var files, err = path.List("/sys/class/hwmon", 2)
+	var files, err = path.List("/sys/class/hwmon", 2, path.NewRegexEntitiesFilter(deviceNameRegex))
 	if err != nil {
 		return nil, err
 	}
-
-	files = path.FilterEntities(files, path.NewRegexEntitiesFilter(deviceNameRegex))
 
 	var results []path.Entry
 	for _, file := range files {
