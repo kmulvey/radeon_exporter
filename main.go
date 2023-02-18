@@ -41,7 +41,14 @@ func main() {
 
 	go func() {
 		http.Handle("/metrics", promhttp.Handler())
-		if err := http.ListenAndServe(addr, nil); err != nil {
+
+		var server = &http.Server{
+			Addr:         addr,
+			ReadTimeout:  5 * time.Second,
+			WriteTimeout: 10 * time.Second,
+		}
+
+		if err := server.ListenAndServe(); err != nil {
 			log.Fatal("http server error: ", err)
 		}
 	}()
