@@ -26,7 +26,9 @@ func main() {
 
 	var addr string
 	var v, h bool
+	var updateInterval int
 	flag.StringVar(&addr, "port", ":9200", "address to bind to for metrics server")
+	flag.IntVar(&updateInterval, "update-interval", 1000, "how often to collect metrics (in milliseconds)")
 	flag.BoolVar(&v, "version", false, "print version")
 	flag.BoolVar(&v, "v", false, "print version")
 	flag.BoolVar(&h, "help", false, "print options")
@@ -51,7 +53,7 @@ func main() {
 
 	fmt.Println("started, go to grafana to monitor")
 
-	ticker := time.NewTicker(time.Second)
+	ticker := time.NewTicker(time.Duration(updateInterval * int(time.Millisecond)))
 	for range ticker.C {
 
 		err = collectStats(cards)
