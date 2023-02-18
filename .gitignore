@@ -15,3 +15,5 @@
 # vendor/
 
 radeon_exporter
+.vscode
+dist
