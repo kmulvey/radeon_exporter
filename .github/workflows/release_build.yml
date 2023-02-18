@@ -1,0 +1,76 @@
+name: radeon_exporter
+
+on: push
+
+jobs:
+  build:
+    name: radeon_exporter build
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v3
+
+      - name: Set up Go 
+        uses: actions/setup-go@v3
+        with:
+          check-latest: true
+          cache: true
+          go-version: 1.19
+        id: go
+
+      - name: install deps
+        uses: ConorMacBride/install-package@v1
+        with:
+          brew: jpegoptim imagemagick
+          apt: jpegoptim imagemagick
+          choco: jpegoptim ImageMagick
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+          args: --timeout=5m
+
+      - name: Govulncheck
+        uses: kmulvey/govulncheck-action@v1.0.0
+
+      - name: Build & Test
+        run: |
+          go mod tidy
+          go test -v -race -count 1 -parallel 5 -covermode=atomic -coverprofile=coverage.out ./...
+          go build -v -ldflags="-s -w" ./...
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3  
+        with:
+          verbose: true # optional (default = false)
+
+  release:
+    name: radeon_exporter release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0 # See: https://goreleaser.com/ci/actions/
+
+      - name: Set up Go 
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+          check-latest: true
+          cache: true
+        id: go
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v3
+        with:
+          version: latest
+          args: release --config .goreleaser.yaml --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
