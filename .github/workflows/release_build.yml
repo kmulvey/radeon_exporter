@@ -34,7 +34,7 @@ jobs:
           args: --timeout=5m
 
       - name: Govulncheck
-        uses: kmulvey/govulncheck-action@v1.0.0
+        uses: kmulvey/govulncheck-action@v1.1.2
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3  
