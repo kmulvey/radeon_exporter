@@ -3,11 +3,9 @@ module github.com/kmulvey/radeon_exporter
 go 1.20
 
 require (
-	github.com/kmulvey/path v1.16.0
+	github.com/kmulvey/path v1.16.2
 	github.com/prometheus/client_golang v1.14.0
 )
-
-replace github.com/kmulvey/path => ../path
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
