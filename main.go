@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/kmulvey/path"
+	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
@@ -63,13 +64,14 @@ func main() {
 	ticker := time.NewTicker(time.Duration(updateInterval * int(time.Millisecond)))
 	for range ticker.C {
 
-		err = collectStats(cards)
+		err = collectStats(statMap, cards) // statMap is defined in stats.go
 		if err != nil {
 			log.Fatal(err)
 		}
 	}
 }
 
+// findRadeonDevices searches hwmon to find amd gpus
 func findRadeonDevices() ([]path.Entry, error) {
 
 	var files, err = path.List("/sys/class/hwmon", 2, path.NewRegexEntitiesFilter(deviceNameRegex))
@@ -97,7 +99,9 @@ func findRadeonDevices() ([]path.Entry, error) {
 	return results, nil
 }
 
-func collectStats(cards []path.Entry) error {
+// collect stats is given a map of hwmon files => prom stat as well as an array of gpus.
+// It then calls parseFileAsFloat to get the value and publishes the stat.
+func collectStats(statMap map[string]*prometheus.GaugeVec, cards []path.Entry) error {
 
 	for _, card := range cards {
 
@@ -117,6 +121,7 @@ func collectStats(cards []path.Entry) error {
 	return nil
 }
 
+// parseFileAsFloat reads a given hwmon file and returns its value as a float64
 func parseFileAsFloat(file string) (float64, error) {
 
 	b, err := os.ReadFile(file)
@@ -128,6 +133,7 @@ func parseFileAsFloat(file string) (float64, error) {
 }
 
 /*
+// parseFileAsString reads a given hwmon file and returns its value as a string
 func parseFileAsString(file string) (string, error) {
 
 	b, err := os.ReadFile(file)

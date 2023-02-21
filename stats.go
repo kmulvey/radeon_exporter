@@ -106,6 +106,7 @@ var (
 		Help:      "currently used VRAM in bytes",
 	}, []string{"card_id"})
 
+	// statMap maps filename to prom stat
 	statMap = map[string]*prometheus.GaugeVec{
 		"fan1_input":              fanInput,
 		"fan1_max":                fanMax,
