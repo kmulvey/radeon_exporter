@@ -3,7 +3,7 @@ module github.com/kmulvey/radeon_exporter
 go 1.20
 
 require (
-	github.com/kmulvey/path v1.16.2
+	github.com/kmulvey/path v1.18.0
 	github.com/prometheus/client_golang v1.14.0
 )
 
