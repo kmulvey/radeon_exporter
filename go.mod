@@ -7,8 +7,6 @@ require (
 	github.com/prometheus/client_golang v1.15.0
 )
 
-replace github.com/kmulvey/path => ../path/
-
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
