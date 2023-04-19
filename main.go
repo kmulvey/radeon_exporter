@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -16,8 +15,6 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
-
-var deviceNameRegex = regexp.MustCompile("name$")
 
 // https://docs.kernel.org/gpu/amdgpu/thermal.html
 // https://www.kernel.org/doc/html/v5.6/hwmon/lochnagar.html
@@ -74,9 +71,18 @@ func main() {
 // findRadeonDevices searches hwmon to find amd gpus
 func findRadeonDevices() ([]path.Entry, error) {
 
-	var files, err = path.List("/sys/class/hwmon", 2, path.NewRegexEntitiesFilter(deviceNameRegex))
+	var dirs, err = path.List("/sys/class/hwmon", 1, false)
 	if err != nil {
 		return nil, err
+	}
+
+	// this is kinda silly to try to concat paths rather than passing levelsDeep == 2 in the List() call
+	// above but that fails because there are so many levels of symlinks in that filesystem.
+	var files []path.Entry
+	for _, dir := range dirs {
+		if entry, err := path.NewEntry(filepath.Join(dir.String(), "name"), 0); err == nil {
+			files = append(files, entry)
+		}
 	}
 
 	var results []path.Entry
@@ -124,9 +130,10 @@ func collectStats(statMap map[string]*prometheus.GaugeVec, cards []path.Entry) e
 // parseFileAsFloat reads a given hwmon file and returns its value as a float64
 func parseFileAsFloat(file string) (float64, error) {
 
-	b, err := os.ReadFile(file)
+	var b, err = os.ReadFile(file)
 	if err != nil {
-		return 0, err
+		//nolint:nilerr
+		return 0, nil // we dont return the error here because not all "cards" have fans (onboard video)
 	}
 
 	return strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
