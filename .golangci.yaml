@@ -4,9 +4,8 @@ run:
   timeout: 10m
   tests: true
   modules-download-mode: readonly
-  go: '1.20'
+  go: "1.20"
 linters:
-  #disable-all: false
   #enable-all: true
   enable:
     - bidichk
@@ -22,19 +21,14 @@ linters:
     - nilerr
     - paralleltest
     - prealloc
-    - unparam
+      #    - unparam  https://github.com/mvdan/unparam/issues/52
     - usestdlibvars
     - wastedassign
 linters-settings:
   govet:
-    # Report about shadowed variables.
-    # Default: false
     check-shadowing: false
-    # Settings per analyzer.
-    #settings:
-      # Analyzer name, run `go tool vet help` to see all analyzers.
     disable-all: false
     enable-all: true
-    disable: 
+    disable:
       - shadow
       - fieldalignment # giving false positives

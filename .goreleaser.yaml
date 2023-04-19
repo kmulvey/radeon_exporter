@@ -1,12 +1,18 @@
 before:
   hooks:
-    # You may remove this if you don't use go modules.
     - go mod tidy
+
 builds:
   - id: radeon_exporter
     main: ./
+    binary: radeon_exporter
     goos:
       - linux
+
+    goarch:
+      - amd64
+      - arm64
+      
 archives:
   - id: foo
     name_template: >-
