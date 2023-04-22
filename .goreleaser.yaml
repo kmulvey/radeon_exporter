@@ -21,6 +21,7 @@ archives:
       {{- if eq .Arch "amd64" }}x86_64
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
+      
 checksum:
   name_template: 'checksums.txt'
 snapshot:
@@ -31,3 +32,63 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+
+nfpms:
+  # note that this is an array of nfpm configs
+  - # ID of the nfpm config, must be unique.
+    id: radeon_exporter
+
+    package_name: radeon_exporter
+
+    builds:
+      - radeon_exporter
+
+    # Your app's vendor.
+    vendor: Kevin Mulvey
+
+    # Your app's homepage.
+    homepage: https://github.com/kmulvey/radeon_exporter
+
+    # Your app's maintainer (probably you).
+    maintainer: Drummer <drum-roll@example.com>
+
+    # Your app's description.
+    description: |-
+      Threaded hashing for large files.
+
+    # Your app's license.
+    license: MIT
+
+    # Formats to be generated.
+    formats:
+      - apk
+      - deb
+      - rpm
+      - termux.deb
+      - archlinux
+
+    provides:
+      - radeon_exporter
+
+    # Path that the binaries should be installed.
+    # Default: '/usr/bin'
+    bindir: /usr/bin
+
+    changelog: ./changelog.yml
+
+    # Custom configuration applied only to the RPM packager.
+    rpm:
+      group: root
+      compression: lzma
+      # The package is signed if a key_file is set
+      #signature:
+      # PGP secret key file path (can also be ASCII-armored).
+      # The passphrase is taken from the environment variable
+      # `$NFPM_ID_RPM_PASSPHRASE` with a fallback to `$NFPM_ID_PASSPHRASE`,
+      # where ID is the id of the current nfpm config.
+      # The id will be transformed to uppercase.
+      # E.g. If your nfpm id is 'default' then the rpm-specific passphrase
+      # should be set as `$NFPM_DEFAULT_RPM_PASSPHRASE`
+      #
+      # Templates: allowed
+      #key_file: "/home/kmulvey/keys/sec.gpg"
