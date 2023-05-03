@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/kmulvey/path v1.21.0
-	github.com/prometheus/client_golang v1.15.0
+	github.com/prometheus/client_golang v1.15.1
 )
 
 require (
