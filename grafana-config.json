@@ -24,14 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "tjg7UoA4k"
+        "uid": "-FZ2lTPVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -66,21 +66,26 @@
       },
       "id": 11,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "tjg7UoA4k"
+            "uid": "-FZ2lTPVz"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -97,7 +102,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "tjg7UoA4k"
+        "uid": "-FZ2lTPVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -132,21 +137,26 @@
       },
       "id": 12,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "tjg7UoA4k"
+            "uid": "-FZ2lTPVz"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -163,7 +173,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "tjg7UoA4k"
+        "uid": "-FZ2lTPVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -171,6 +181,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -184,6 +195,501 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_gpu_busy_percent{card_id=\"$cardID\"} ",
+          "instant": false,
+          "legendFormat": "GPU busy",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_mem_busy_percent{card_id=\"$cardID\"} ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "VRAM used",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Overal Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "-FZ2lTPVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_mem_info_vis_vram_total{card_id=\"$cardID\"} ",
+          "instant": false,
+          "legendFormat": "Visible VRAM Total",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_mem_info_vis_vram_used{card_id=\"$cardID\"} ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Visible VRAM Used",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_mem_info_vram_used{card_id=\"$cardID\"} ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Total VRAM Used",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_mem_info_vram_total{card_id=\"$cardID\"} ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Total VRAM",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "VRAM",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "-FZ2lTPVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "rothz"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_freq1_input{card_id=\"$cardID\"} ",
+          "instant": false,
+          "legendFormat": "gfx/compute clock",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_freq2_input{card_id=\"$cardID\"} ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "memory clock",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Clock Speeds",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "-FZ2lTPVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_mem_info_gtt_total{card_id=\"$cardID\"} ",
+          "instant": false,
+          "legendFormat": "GTT Total",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "radeon_exporter_mem_info_gtt_used{card_id=\"$cardID\"} ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "GTT Used",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "GTT Memory",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "-FZ2lTPVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -222,12 +728,17 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 8
+        "y": 26
       },
       "id": 2,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -241,7 +752,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "tjg7UoA4k"
+            "uid": "-FZ2lTPVz"
           },
           "editorMode": "code",
           "expr": "radeon_exporter_fan1_input{card_id=\"$cardID\"}",
@@ -252,7 +763,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "tjg7UoA4k"
+            "uid": "-FZ2lTPVz"
           },
           "editorMode": "code",
           "expr": "radeon_exporter_fan1_max{card_id=\"$cardID\"}",
@@ -268,7 +779,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "tjg7UoA4k"
+        "uid": "-FZ2lTPVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -276,6 +787,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -289,6 +801,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -327,12 +840,17 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 8
+        "y": 26
       },
       "id": 3,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -346,7 +864,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "tjg7UoA4k"
+            "uid": "-FZ2lTPVz"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -363,7 +881,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "tjg7UoA4k"
+        "uid": "-FZ2lTPVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -371,6 +889,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -384,6 +903,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -422,12 +942,17 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 35
       },
       "id": 5,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -441,7 +966,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "tjg7UoA4k"
+            "uid": "-FZ2lTPVz"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -450,6 +975,18 @@
           "legendFormat": "GPU die temperature",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "-FZ2lTPVz"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time(radeon_exporter_temp1_input{card_id=\"$cardID\"}[30m]) / 1000",
+          "hide": false,
+          "legendFormat": "30m Moving Avg",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "Temperature",
@@ -458,7 +995,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "tjg7UoA4k"
+        "uid": "-FZ2lTPVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -466,6 +1003,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -479,6 +1017,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -517,12 +1056,17 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 35
       },
       "id": 6,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -536,7 +1080,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "tjg7UoA4k"
+            "uid": "-FZ2lTPVz"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -549,477 +1093,11 @@
       ],
       "title": "Voltage",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "tjg7UoA4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 26
-      },
-      "id": 7,
-      "options": {
-        "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_gpu_busy_percent{card_id=\"$cardID\"} ",
-          "instant": false,
-          "legendFormat": "GPU busy",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_mem_busy_percent{card_id=\"$cardID\"} ",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "VRAM used",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Overal Usage",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "tjg7UoA4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "rothz"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 26
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_freq1_input{card_id=\"$cardID\"} ",
-          "instant": false,
-          "legendFormat": "gfx/compute clock",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_freq2_input{card_id=\"$cardID\"} ",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "memory clock",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Clock Speeds",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "tjg7UoA4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 35
-      },
-      "id": 9,
-      "options": {
-        "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Last *",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_mem_info_vis_vram_total{card_id=\"$cardID\"} ",
-          "instant": false,
-          "legendFormat": "Visible VRAM Total",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_mem_info_vis_vram_used{card_id=\"$cardID\"} ",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Visible VRAM Used",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_mem_info_vram_used{card_id=\"$cardID\"} ",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Total VRAM Used",
-          "range": true,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_mem_info_vram_total{card_id=\"$cardID\"} ",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Total VRAM",
-          "range": true,
-          "refId": "D"
-        }
-      ],
-      "title": "VRAM",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "tjg7UoA4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 35
-      },
-      "id": 8,
-      "options": {
-        "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_mem_info_gtt_total{card_id=\"$cardID\"} ",
-          "instant": false,
-          "legendFormat": "GTT Total",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "tjg7UoA4k"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "radeon_exporter_mem_info_gtt_used{card_id=\"$cardID\"} ",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "GTT Used",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "GTT Memory",
-      "type": "timeseries"
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 37,
-  "style": "dark",
+  "revision": 1,
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
@@ -1031,7 +1109,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "tjg7UoA4k"
+          "uid": "-FZ2lTPVz"
         },
         "definition": "label_values(card_id)",
         "hide": 0,
@@ -1049,11 +1127,28 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "-FZ2lTPVz"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
