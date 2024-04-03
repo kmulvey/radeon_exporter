@@ -14,6 +14,8 @@ import (
 	"github.com/kmulvey/path"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"go.szostok.io/version"
+	"go.szostok.io/version/printer"
 )
 
 // https://docs.kernel.org/gpu/amdgpu/thermal.html
@@ -34,6 +36,15 @@ func main() {
 
 	if h {
 		flag.PrintDefaults()
+		os.Exit(0)
+	}
+
+	if v {
+		var verPrinter = printer.New()
+		var info = version.Get()
+		if err := verPrinter.PrintInfo(os.Stdout, info); err != nil {
+			log.Fatal(err)
+		}
 		os.Exit(0)
 	}
 
@@ -105,7 +116,7 @@ func findRadeonDevices() ([]path.Entry, error) {
 	return results, nil
 }
 
-// collect stats is given a map of hwmon files => prom stat as well as an array of gpus.
+// collectStats is given a map of hwmon files => prom stat as well as an array of gpus.
 // It then calls parseFileAsFloat to get the value and publishes the stat.
 func collectStats(statMap map[string]*prometheus.GaugeVec, cards []path.Entry) error {
 
@@ -138,16 +149,3 @@ func parseFileAsFloat(file string) (float64, error) {
 
 	return strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
 }
-
-/*
-// parseFileAsString reads a given hwmon file and returns its value as a string
-func parseFileAsString(file string) (string, error) {
-
-	b, err := os.ReadFile(file)
-	if err != nil {
-		return "", err
-	}
-
-	return strings.TrimSpace(string(b)), nil
-}
-*/
