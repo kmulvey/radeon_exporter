@@ -1,5 +1,5 @@
 # radeon_exporter
-[![radeon_exporter](https://github.com/kmulvey/radeon_exporter/actions/workflows/release_build.yml/badge.svg)](https://github.com/kmulvey/radeon_exporter/actions/workflows/release_build.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/kmulvey/radeon_exporter)](https://goreportcard.com/report/github.com/kmulvey/radeon_exporter) [![Go Reference](https://pkg.go.dev/badge/github.com/kmulvey/radeon_exporter.svg)](https://pkg.go.dev/github.com/kmulvey/radeon_exporter)
+[![Build](https://github.com/kmulvey/radeon_exporter/actions/workflows/build.yml/badge.svg)](https://github.com/kmulvey/radeon_exporter/actions/workflows/build.yml) [![Release](https://github.com/kmulvey/radeon_exporter/actions/workflows/release.yml/badge.svg)](https://github.com/kmulvey/radeon_exporter/actions/workflows/release.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/kmulvey/radeon_exporter)](https://goreportcard.com/report/github.com/kmulvey/radeon_exporter) [![Go Reference](https://pkg.go.dev/badge/github.com/kmulvey/radeon_exporter.svg)](https://pkg.go.dev/github.com/kmulvey/radeon_exporter)
 
 Prometheus exporter for Radeon (AMD) graphics cards. 
 
