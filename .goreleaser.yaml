@@ -21,7 +21,6 @@ release:
   github:
     owner: kmulvey
     name: radeon_exporter
-  # IDs of the archives to use.
   ids:
     - radeon_exporter
   # Whether to remove existing draft releases with the same name before creating
@@ -37,11 +36,17 @@ archives:
       {{- if eq .Arch "amd64" }}x86_64
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
+    files:
+      - radeon_exporter.service
+      - CHANGELOG.md
+      - LICENSE
       
 checksum:
   name_template: 'checksums.txt'
+
 snapshot:
-  name_template: "{{ incpatch .Version }}-next"
+  name_template: "{{ incpatch .Version }}-snapshot"
+
 changelog:
   sort: asc
   filters:
@@ -96,6 +101,10 @@ nfpms:
       # Basic file that applies to all packagers
       - src: radeon_exporter.service
         dst: /etc/systemd/system/radeon_exporter.service
+
+    scripts:
+      postinstall: "scripts/postinstall.sh"
+      preremove: "scripts/preremove.sh"
 
     # Custom configuration applied only to the RPM packager.
     rpm:

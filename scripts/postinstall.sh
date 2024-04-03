@@ -1,0 +1,3 @@
+systemctl daemon-reload
+systemctl enable radeon_exporter
+systemctl restart radeon_exporter
