@@ -5,7 +5,11 @@ before:
 builds:
   - id: radeon_exporter
     main: ./
+    env:
+      - CGO_ENABLED=0
     binary: radeon_exporter
+    ldflags:
+      - -s -w -X main.build={{.Version}}
     goos:
       - linux
 
@@ -14,7 +18,7 @@ builds:
       - arm64
       
 archives:
-  - id: foo
+  - id: dist
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_
@@ -54,7 +58,7 @@ nfpms:
 
     # Your app's description.
     description: |-
-      Threaded hashing for large files.
+      Prometheus exporter for Radeon (AMD) graphics cards.
 
     # Your app's license.
     license: MIT
