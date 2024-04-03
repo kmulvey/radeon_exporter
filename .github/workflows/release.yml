@@ -1,4 +1,4 @@
-name: radeon_exporter
+name: release
 
 on:
   pull_request:
