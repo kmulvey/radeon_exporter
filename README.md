@@ -4,6 +4,7 @@
 Prometheus exporter for Radeon (AMD) graphics cards. 
 
 ## Installation and Usage
+- `sudo cp radeon_exporter /opt/` (this path can be changed if you like, just be sure to change the path in the service file as well)
 - `sudo cp radeon_exporter.service /etc/systemd/system/`
 - `sudo systemctl daemon-reload`
 - `sudo systemctl enable radeon_exporter`
