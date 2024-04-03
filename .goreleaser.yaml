@@ -16,6 +16,18 @@ builds:
     goarch:
       - amd64
       - arm64
+
+release:
+  github:
+    owner: kmulvey
+    name: radeon_exporter
+  # IDs of the archives to use.
+  ids:
+    - radeon_exporter
+  # Whether to remove existing draft releases with the same name before creating
+  replace_existing_draft: true
+  # Whether to remove an artifact that already exists.
+  replace_existing_artifacts: true
       
 archives:
   - id: dist
