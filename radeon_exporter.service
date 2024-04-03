@@ -7,7 +7,7 @@ After=network-online.target
 User=prometheus
 Group=prometheus
 Restart=on-failure
-ExecStart=/opt/radeon_exporter
+ExecStart=/usr/bin/radeon_exporter
 
 [Install]
 WantedBy=multi-user.target
