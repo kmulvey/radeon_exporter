@@ -1,0 +1,2 @@
+systemctl disable radeon_exporter
+systemctl stop radeon_exporter
