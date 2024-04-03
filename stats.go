@@ -50,12 +50,6 @@ var (
 		Help:      "the voltage on the GPU in millivolts",
 	}, []string{"card_id"})
 
-	// pcieSpeed = promauto.NewGaugeVec(prometheus.GaugeOpts{
-	// 	Namespace: promNamespace,
-	// 	Name:      "current_link_speed",
-	// 	Help:      "pcie speed as string",
-	// }, []string{"card_id"})
-
 	/////////////////////////////// start device/*
 
 	gpuBusy = promauto.NewGaugeVec(prometheus.GaugeOpts{
