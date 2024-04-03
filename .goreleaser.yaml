@@ -40,6 +40,7 @@ archives:
       - radeon_exporter.service
       - CHANGELOG.md
       - LICENSE
+      - grafana-config.json
       
 checksum:
   name_template: 'checksums.txt'
