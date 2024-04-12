@@ -24,11 +24,6 @@ jobs:
           cache: true
           go-version: "1.22"
 
-      - name: changelog
-        run: |
-          go install -v github.com/goreleaser/chglog/cmd/chglog@latest
-          chglog format --template repo > CHANGELOG.md
-
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
