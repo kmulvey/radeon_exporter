@@ -1,6 +1,6 @@
 module github.com/kmulvey/radeon_exporter
 
-go 1.22.1
+go 1.22.2
 
 require (
 	github.com/kmulvey/path v1.21.0
