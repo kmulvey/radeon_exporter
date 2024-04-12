@@ -10,6 +10,8 @@ builds:
     binary: radeon_exporter
     ldflags:
       - -s -w -X main.build={{.Version}}
+      - -X go.szostok.io/version.version={{.Version}}
+      - -X go.szostok.io/version.buildDate={{.Date}}
     goos:
       - linux
 
@@ -21,8 +23,6 @@ release:
   github:
     owner: kmulvey
     name: radeon_exporter
-  ids:
-    - radeon_exporter
   # Whether to remove existing draft releases with the same name before creating
   replace_existing_draft: true
   # Whether to remove an artifact that already exists.
@@ -30,6 +30,8 @@ release:
       
 archives:
   - id: dist
+    builds:
+      - radeon_exporter
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_
@@ -38,7 +40,6 @@ archives:
       {{- else }}{{ .Arch }}{{ end }}
     files:
       - radeon_exporter.service
-      - CHANGELOG.md
       - LICENSE
       - grafana-config.json
       
@@ -47,13 +48,6 @@ checksum:
 
 snapshot:
   name_template: "{{ incpatch .Version }}-snapshot"
-
-changelog:
-  sort: asc
-  filters:
-    exclude:
-      - '^docs:'
-      - '^test:'
 
 nfpms:
   # note that this is an array of nfpm configs
@@ -95,8 +89,6 @@ nfpms:
     # Path that the binaries should be installed.
     # Default: '/usr/bin'
     bindir: /usr/bin
-
-    changelog: ./changelog.yml
 
     contents:
       # Basic file that applies to all packagers
