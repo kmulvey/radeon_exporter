@@ -13,4 +13,4 @@ Several linux package formats are available in the releases. Manual linux instal
 - Import grafana-config.json to your grafana instance
 - enjoy!
 
-![Original](https://github.com/kmulvey/radeon_exporter/blob/main/screenshot.jpg?raw=true)
+![Screenshot](https://github.com/kmulvey/radeon_exporter/blob/main/screenshot.jpg?raw=true)
