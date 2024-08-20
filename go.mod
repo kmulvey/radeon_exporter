@@ -4,7 +4,7 @@ go 1.22.5
 
 require (
 	github.com/kmulvey/path v1.22.0
-	github.com/prometheus/client_golang v1.20.0
+	github.com/prometheus/client_golang v1.20.1
 	go.szostok.io/version v1.2.0
 )
 
