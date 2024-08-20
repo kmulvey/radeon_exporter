@@ -11,12 +11,6 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
-        "target": {
-          "limit": 100,
-          "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
-        },
         "type": "dashboard"
       }
     ]
@@ -24,14 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 7,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -64,7 +57,7 @@
         "x": 0,
         "y": 0
       },
-      "id": 11,
+      "id": 2,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -80,7 +73,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.4",
       "targets": [
         {
           "datasource": {
@@ -102,7 +95,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -135,7 +128,7 @@
         "x": 12,
         "y": 0
       },
-      "id": 12,
+      "id": 3,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -151,7 +144,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.4",
       "targets": [
         {
           "datasource": {
@@ -173,7 +166,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -236,7 +229,7 @@
         "x": 0,
         "y": 8
       },
-      "id": 7,
+      "id": 4,
       "options": {
         "legend": {
           "calcs": [
@@ -289,7 +282,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -352,7 +345,7 @@
         "x": 12,
         "y": 8
       },
-      "id": 9,
+      "id": 5,
       "options": {
         "legend": {
           "calcs": [
@@ -381,6 +374,7 @@
           "editorMode": "code",
           "exemplar": false,
           "expr": "radeon_exporter_mem_info_vis_vram_total{card_id=\"$cardID\"} ",
+          "hide": false,
           "instant": false,
           "legendFormat": "Visible VRAM Total",
           "range": true,
@@ -435,7 +429,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -498,7 +492,7 @@
         "x": 0,
         "y": 17
       },
-      "id": 4,
+      "id": 6,
       "options": {
         "legend": {
           "calcs": [
@@ -551,7 +545,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -614,7 +608,7 @@
         "x": 12,
         "y": 17
       },
-      "id": 8,
+      "id": 7,
       "options": {
         "legend": {
           "calcs": [
@@ -667,7 +661,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -730,7 +724,7 @@
         "x": 0,
         "y": 26
       },
-      "id": 2,
+      "id": 8,
       "options": {
         "legend": {
           "calcs": [
@@ -779,7 +773,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -842,7 +836,7 @@
         "x": 12,
         "y": 26
       },
-      "id": 3,
+      "id": 9,
       "options": {
         "legend": {
           "calcs": [
@@ -881,7 +875,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -944,7 +938,7 @@
         "x": 0,
         "y": 35
       },
-      "id": 5,
+      "id": 10,
       "options": {
         "legend": {
           "calcs": [
@@ -995,7 +989,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "-FZ2lTPVz"
+        "uid": "cdk46u2b5np4we"
       },
       "fieldConfig": {
         "defaults": {
@@ -1058,7 +1052,7 @@
         "x": 12,
         "y": 35
       },
-      "id": 6,
+      "id": 11,
       "options": {
         "legend": {
           "calcs": [
@@ -1096,7 +1090,6 @@
     }
   ],
   "refresh": "10s",
-  "revision": 1,
   "schemaVersion": 39,
   "tags": [],
   "templating": {
@@ -1104,35 +1097,8 @@
       {
         "current": {
           "selected": false,
-          "text": "hwmon1",
-          "value": "hwmon1"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "-FZ2lTPVz"
-        },
-        "definition": "label_values(card_id)",
-        "hide": 0,
-        "includeAll": false,
-        "label": "cardID",
-        "multi": false,
-        "name": "cardID",
-        "options": [],
-        "query": {
-          "query": "label_values(card_id)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "Prometheus",
-          "value": "-FZ2lTPVz"
+          "text": "prometheus",
+          "value": "cdk46u2b5np4we"
         },
         "hide": 0,
         "includeAll": false,
@@ -1144,6 +1110,33 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "hwmon1",
+          "value": "hwmon1"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cdk46u2b5np4we"
+        },
+        "definition": "label_values(radeon_exporter_gpu_busy_percent,card_id)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "cardID",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(radeon_exporter_gpu_busy_percent,card_id)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -1152,9 +1145,9 @@
     "to": "now"
   },
   "timepicker": {},
-  "timezone": "",
+  "timezone": "browser",
   "title": "Radeon Exporter",
-  "uid": "PlSSkVJVk",
-  "version": 8,
+  "uid": "fdvf8ln5839q8f",
+  "version": 3,
   "weekStart": ""
 }
