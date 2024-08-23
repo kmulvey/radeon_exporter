@@ -1,4 +1,41 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.1.4"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -18,13 +55,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": null,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -78,7 +115,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -95,7 +132,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -149,7 +186,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -166,7 +203,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -251,7 +288,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -264,7 +301,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -282,7 +319,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -369,7 +406,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -383,7 +420,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -397,7 +434,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -411,7 +448,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -429,7 +466,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -514,7 +551,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -527,7 +564,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -545,7 +582,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -630,7 +667,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -643,7 +680,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -661,7 +698,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -746,7 +783,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "radeon_exporter_fan1_input{card_id=\"$cardID\"}",
@@ -757,7 +794,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "radeon_exporter_fan1_max{card_id=\"$cardID\"}",
@@ -773,7 +810,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -858,13 +895,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "radeon_exporter_power1_average{card_id=\"$cardID\"} / 1000",
+          "expr": "radeon_exporter_power1_input{card_id=\"$cardID\"} / 1000",
           "instant": false,
-          "legendFormat": "Fan Speed",
+          "legendFormat": "PPT",
           "range": true,
           "refId": "A"
         }
@@ -875,7 +912,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -960,7 +997,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -973,7 +1010,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(radeon_exporter_temp1_input{card_id=\"$cardID\"}[30m]) / 1000",
@@ -989,7 +1026,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "cdk46u2b5np4we"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1074,15 +1111,28 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "-FZ2lTPVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
           "expr": "radeon_exporter_in0_input{card_id=\"$cardID\"} ",
           "instant": false,
-          "legendFormat": "GPU voltage",
+          "legendFormat": "vddgfx",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "radeon_exporter_in1_input{card_id=\"$cardID\"} ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "vddnb",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "Voltage",
@@ -1095,31 +1145,10 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "selected": false,
-          "text": "prometheus",
-          "value": "cdk46u2b5np4we"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "datasource",
-        "options": [],
-        "query": "prometheus",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      },
-      {
-        "current": {
-          "selected": true,
-          "text": "hwmon1",
-          "value": "hwmon1"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "cdk46u2b5np4we"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(radeon_exporter_gpu_busy_percent,card_id)",
         "hide": 0,
@@ -1148,6 +1177,6 @@
   "timezone": "browser",
   "title": "Radeon Exporter",
   "uid": "fdvf8ln5839q8f",
-  "version": 3,
+  "version": 8,
   "weekStart": ""
 }
