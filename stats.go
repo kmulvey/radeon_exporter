@@ -20,12 +20,6 @@ var (
 		Help:      "a maximum value Unit: revolution/max (RPM)",
 	}, []string{"card_id"})
 
-	powerAvg = promauto.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: promNamespace,
-		Name:      "power1_average",
-		Help:      "average power used by the GPU in microWatts",
-	}, []string{"card_id"})
-
 	computeFreq = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: promNamespace,
 		Name:      "freq1_input",
@@ -44,10 +38,22 @@ var (
 		Help:      "the on die GPU temperature in millidegrees Celsius",
 	}, []string{"card_id"})
 
-	cardVoltage = promauto.NewGaugeVec(prometheus.GaugeOpts{
+	vddgfx = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: promNamespace,
 		Name:      "in0_input",
-		Help:      "the voltage on the GPU in millivolts",
+		Help:      "the vddgfx voltage in millivolts",
+	}, []string{"card_id"})
+
+	vddnb = promauto.NewGaugeVec(prometheus.GaugeOpts{
+		Namespace: promNamespace,
+		Name:      "in1_input",
+		Help:      "the vddnb voltage in millivolts",
+	}, []string{"card_id"})
+
+	ppt = promauto.NewGaugeVec(prometheus.GaugeOpts{
+		Namespace: promNamespace,
+		Name:      "power1_input",
+		Help:      "the ppt voltage in microvolts",
 	}, []string{"card_id"})
 
 	/////////////////////////////// start device/*
@@ -104,11 +110,12 @@ var (
 	statMap = map[string]*prometheus.GaugeVec{
 		"fan1_input":              fanInput,
 		"fan1_max":                fanMax,
-		"power1_average":          powerAvg,
 		"freq1_input":             computeFreq,
 		"freq2_input":             memFreq,
 		"temp1_input":             dieTemp,
-		"in0_input":               cardVoltage,
+		"in0_input":               vddgfx,
+		"in1_input":               vddnb,
+		"power1_input":            ppt,
 		"device/gpu_busy_percent": gpuBusy,
 		"device/mem_busy_percent": memBusy,
 		// "device/current_link_speed": memBusy,  HANDLE string vals
