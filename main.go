@@ -71,7 +71,6 @@ func main() {
 
 	ticker := time.NewTicker(time.Duration(updateInterval * int(time.Millisecond)))
 	for range ticker.C {
-
 		err = collectStats(statMap, cards) // statMap is defined in stats.go
 		if err != nil {
 			log.Fatal(err)
@@ -98,7 +97,6 @@ func findRadeonDevices() ([]path.Entry, error) {
 
 	var results []path.Entry
 	for _, file := range files {
-
 		b, err := os.ReadFile(file.AbsolutePath)
 		if err != nil {
 			return nil, err
@@ -121,16 +119,13 @@ func findRadeonDevices() ([]path.Entry, error) {
 func collectStats(statMap map[string]*prometheus.GaugeVec, cards []path.Entry) error {
 
 	for _, card := range cards {
-
 		var cardId = filepath.Base(card.AbsolutePath)
 
 		for statName, promStat := range statMap {
-
 			var value, err = parseFileAsFloat(filepath.Join(card.AbsolutePath, statName))
 			if err != nil {
 				return err
 			}
-
 			promStat.WithLabelValues(cardId).Set(value)
 		}
 	}
