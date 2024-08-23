@@ -5,7 +5,9 @@ Prometheus exporter for Radeon (AMD) graphics cards.
 
 ## Installation and Usage
 ### Docker
-docker run --publish 9200:9200 radeon-exporter
+- `docker pull kmulvey/radeon_exporter:latest`
+- `docker run --publish 9200:9200 radeon-exporter`
+
 ### Systemd
 Several linux package formats are available in the releases. Manual linux install can be done as follows:  
 - `sudo cp radeon_exporter /usr/bin/` (this path can be changed if you like, just be sure to change the path in the service file as well)
