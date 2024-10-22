@@ -19,7 +19,7 @@ jobs:
         with:
           check-latest: true
           cache: true
-          go-version: "1.22"
+          go-version: "1.23"
 
       - name: Build & Test
         run: |
@@ -41,4 +41,4 @@ jobs:
           args: --timeout=5m
 
       - name: Govulncheck
-        uses: kmulvey/govulncheck-action@v1.2.0
+        uses: kmulvey/govulncheck-action@v1.3.0
