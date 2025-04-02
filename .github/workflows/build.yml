@@ -19,26 +19,32 @@ jobs:
         with:
           check-latest: true
           cache: true
-          go-version: "1.23"
+          go-version: "1.24"
 
-      - name: Build & Test
+      - name: Prepare
         run: |
           go clean -r ./...
           go mod tidy
-          go build -v -ldflags="-s -w" ./...
-          go test -v -race -count 1 -parallel 5 -covermode=atomic -coverprofile="coverage.out" ./...
+
+      - name: Test
+        run: |
+          go test -v -race -count 1 -parallel 50 -covermode=atomic -coverprofile="coverage.out" ./...
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true # optional (default = false)
 
-      - name: golangci-lint
+      - name: Lint
         uses: golangci/golangci-lint-action@v6
         with:
           version: latest
           args: --timeout=5m
 
+      - name: Build 
+        run: |
+          go build -v -ldflags="-s -w" ./...
+
       - name: Govulncheck
-        uses: kmulvey/govulncheck-action@v1.3.0
+        uses: kmulvey/govulncheck-action@v1.4.0
