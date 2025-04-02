@@ -1,34 +1,43 @@
 # Options for analysis running.
+# why windows fails gofmt:
+# https://github.com/golangci/golangci-lint/issues/1018
+# https://github.com/golangci/golangci-lint/issues/580
 run:
-  concurrency: 2
+  concurrency: 10
   timeout: 10m
   tests: true
   modules-download-mode: readonly
-  go: "1.22"
+  go: "1.24"
+
 linters:
-  #enable-all: true
-  enable:
-    - bidichk
-    - bodyclose
-    - containedctx
-      #- cyclop
-      #- dupl
-    - exportloopref
-    - gocritic
-    - goconst
-    - gosec
-    - misspell
-    - nilerr
-    - paralleltest
-    - prealloc
-      #    - unparam  https://github.com/mvdan/unparam/issues/52
-    - usestdlibvars
-    - wastedassign
+  enable-all: true
+  disable:
+    - nolintlint
+    - wsl # white space
+    - lll # long lines
+    - nlreturn # new lines before return
+    - varnamelen
+    - whitespace
+    - testpackage # should not use unexported functions and methods from source code in tests
+    - mnd # magic numbers
+    - depguard # deps white list
+    - exhaustruct # finds structures with uninitialized fields
+    - gci # import formatting
+    - gomoddirectives # go.mod linting
+    - gofumpt # aggressive gofmt
+    - cyclop # TEMP ... should be addressed
+    - tenv # Replaced by usetesting.
+
 linters-settings:
   govet:
-    check-shadowing: false
     disable-all: false
     enable-all: true
     disable:
       - shadow
       - fieldalignment # giving false positives
+
+  testifylint:
+    # Enable all checkers (https://github.com/Antonboom/testifylint#checkers).
+    enable-all: true
+    disable:
+      - require-error
