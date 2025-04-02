@@ -67,7 +67,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("started, go to grafana to monitor")
+	log.Println("started, go to Grafana to monitor")
 
 	ticker := time.NewTicker(time.Duration(updateInterval * int(time.Millisecond)))
 	for range ticker.C {
@@ -78,16 +78,14 @@ func main() {
 	}
 }
 
-// findRadeonDevices searches hwmon to find amd gpus
+// findRadeonDevices searches hwmon to find AMD GPUs.
 func findRadeonDevices() ([]path.Entry, error) {
 
 	var dirs, err = path.List("/sys/class/hwmon", 1, false)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to list hwmon directories: %w", err)
 	}
 
-	// this is kinda silly to try to concat paths rather than passing levelsDeep == 2 in the List() call
-	// above but that fails because there are so many levels of symlinks in that filesystem.
 	var files []path.Entry
 	for _, dir := range dirs {
 		if entry, err := path.NewEntry(filepath.Join(dir.String(), "name"), 0); err == nil {
@@ -99,13 +97,13 @@ func findRadeonDevices() ([]path.Entry, error) {
 	for _, file := range files {
 		b, err := os.ReadFile(file.AbsolutePath)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("failed to read file %s: %w", file.AbsolutePath, err)
 		}
 
 		if strings.TrimSpace(string(b)) == "amdgpu" {
 			var cardDir, err = path.NewEntry(filepath.Dir(file.AbsolutePath), 0)
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("failed to create path entry for %s: %w", file.AbsolutePath, err)
 			}
 			results = append(results, cardDir)
 		}
@@ -114,33 +112,38 @@ func findRadeonDevices() ([]path.Entry, error) {
 	return results, nil
 }
 
-// collectStats is given a map of hwmon files => prom stat as well as an array of gpus.
+// collectStats is given a map of hwmon files => Prometheus stat as well as an array of GPUs.
 // It then calls parseFileAsFloat to get the value and publishes the stat.
 func collectStats(statMap map[string]*prometheus.GaugeVec, cards []path.Entry) error {
 
 	for _, card := range cards {
-		var cardId = filepath.Base(card.AbsolutePath)
+		var cardID = filepath.Base(card.AbsolutePath)
 
 		for statName, promStat := range statMap {
 			var value, err = parseFileAsFloat(filepath.Join(card.AbsolutePath, statName))
 			if err != nil {
 				return err
 			}
-			promStat.WithLabelValues(cardId).Set(value)
+			promStat.WithLabelValues(cardID).Set(value)
 		}
 	}
 
 	return nil
 }
 
-// parseFileAsFloat reads a given hwmon file and returns its value as a float64
+// parseFileAsFloat reads a given hwmon file and returns its value as a float64.
 func parseFileAsFloat(file string) (float64, error) {
 
 	var b, err = os.ReadFile(file)
 	if err != nil {
 		//nolint:nilerr
-		return 0, nil // we dont return the error here because not all "cards" have fans (onboard video)
+		return 0, fmt.Errorf("failed to read file %s: %w", file, err)
 	}
 
-	return strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
+	value, err := strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
+	if err != nil {
+		return 0, fmt.Errorf("failed to parse float from file %s: %w", file, err)
+	}
+
+	return value, nil
 }

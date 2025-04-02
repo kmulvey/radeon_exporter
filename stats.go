@@ -5,6 +5,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promauto"
 )
 
+// nolint:gochecknoglobals
 var (
 	promNamespace = "radeon_exporter"
 
@@ -56,8 +57,6 @@ var (
 		Help:      "the ppt voltage in microvolts",
 	}, []string{"card_id"})
 
-	/////////////////////////////// start device/*
-
 	gpuBusy = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: promNamespace,
 		Name:      "gpu_busy_percent",
@@ -70,9 +69,9 @@ var (
 		Help:      "how busy the VRAM is as a percentage",
 	}, []string{"card_id"})
 
-	gttTotal = promauto.NewGaugeVec(prometheus.GaugeOpts{
+	gttSize = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: promNamespace,
-		Name:      "mem_info_gtt_total",
+		Name:      "mem_info_gtt_size",
 		Help:      "total size of the GTT block, in bytes",
 	}, []string{"card_id"})
 
@@ -82,9 +81,9 @@ var (
 		Help:      "current used size of the GTT block, in bytes",
 	}, []string{"card_id"})
 
-	visibleVRAMTotal = promauto.NewGaugeVec(prometheus.GaugeOpts{
+	visibleVRAMSize = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: promNamespace,
-		Name:      "mem_info_vis_vram_total",
+		Name:      "mem_info_vis_vram_size",
 		Help:      "total amount of visible VRAM in bytes",
 	}, []string{"card_id"})
 
@@ -94,9 +93,9 @@ var (
 		Help:      "currently used visible VRAM in bytes",
 	}, []string{"card_id"})
 
-	totalVRAM = promauto.NewGaugeVec(prometheus.GaugeOpts{
+	totalVRAMSize = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: promNamespace,
-		Name:      "mem_info_vram_total",
+		Name:      "mem_info_vram_size",
 		Help:      "total amount of VRAM in bytes",
 	}, []string{"card_id"})
 
@@ -106,7 +105,7 @@ var (
 		Help:      "currently used VRAM in bytes",
 	}, []string{"card_id"})
 
-	// statMap maps filename to prom stat
+	// statMap maps filename to prom stat.
 	statMap = map[string]*prometheus.GaugeVec{
 		"fan1_input":              fanInput,
 		"fan1_max":                fanMax,
@@ -119,11 +118,11 @@ var (
 		"device/gpu_busy_percent": gpuBusy,
 		"device/mem_busy_percent": memBusy,
 		// "device/current_link_speed": memBusy,  HANDLE string vals
-		"device/mem_info_gtt_total":      gttTotal,
-		"device/mem_info_gtt_used":       gttUsed,
-		"device/mem_info_vis_vram_total": visibleVRAMTotal,
-		"device/mem_info_vis_vram_used":  visibleVRAMUsed,
-		"device/mem_info_vram_total":     totalVRAM,
-		"device/mem_info_vram_used":      usedVRAM,
+		"device/mem_info_gtt_size":      gttSize,
+		"device/mem_info_gtt_used":      gttUsed,
+		"device/mem_info_vis_vram_size": visibleVRAMSize,
+		"device/mem_info_vis_vram_used": visibleVRAMUsed,
+		"device/mem_info_vram_size":     totalVRAMSize,
+		"device/mem_info_vram_used":     usedVRAM,
 	}
 )
