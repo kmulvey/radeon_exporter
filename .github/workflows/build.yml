@@ -47,4 +47,4 @@ jobs:
           go build -v -ldflags="-s -w" ./...
 
       - name: Govulncheck
-        uses: kmulvey/govulncheck-action@v1.5.0
+        uses: kmulvey/govulncheck-action@v1.6.0
