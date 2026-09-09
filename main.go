@@ -23,7 +23,6 @@ import (
 // https://kernel.org/doc/html/latest/gpu/amdgpu/driver-misc.html#mem-info-vram-total
 
 func main() {
-
 	var addr string
 	var v, h bool
 	var updateInterval int
@@ -40,8 +39,8 @@ func main() {
 	}
 
 	if v {
-		var verPrinter = printer.New()
-		var info = version.Get()
+		verPrinter := printer.New()
+		info := version.Get()
 		if err := verPrinter.PrintInfo(os.Stdout, info); err != nil {
 			log.Fatal(err)
 		}
@@ -51,7 +50,7 @@ func main() {
 	go func() {
 		http.Handle("/metrics", promhttp.Handler())
 
-		var server = &http.Server{
+		server := &http.Server{
 			Addr:         addr,
 			ReadTimeout:  5 * time.Second,
 			WriteTimeout: 10 * time.Second,
@@ -62,7 +61,7 @@ func main() {
 		}
 	}()
 
-	var cards, err = findRadeonDevices()
+	cards, err := findRadeonDevices()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -80,8 +79,7 @@ func main() {
 
 // findRadeonDevices searches hwmon to find AMD GPUs.
 func findRadeonDevices() ([]path.Entry, error) {
-
-	var dirs, err = path.List("/sys/class/hwmon", 1, false)
+	dirs, err := path.List("/sys/class/hwmon", 1, false)
 	if err != nil {
 		return nil, fmt.Errorf("failed to list hwmon directories: %w", err)
 	}
@@ -101,7 +99,7 @@ func findRadeonDevices() ([]path.Entry, error) {
 		}
 
 		if strings.TrimSpace(string(b)) == "amdgpu" {
-			var cardDir, err = path.NewEntry(filepath.Dir(file.AbsolutePath), 0)
+			cardDir, err := path.NewEntry(filepath.Dir(file.AbsolutePath), 0)
 			if err != nil {
 				return nil, fmt.Errorf("failed to create path entry for %s: %w", file.AbsolutePath, err)
 			}
@@ -115,12 +113,11 @@ func findRadeonDevices() ([]path.Entry, error) {
 // collectStats is given a map of hwmon files => Prometheus stat as well as an array of GPUs.
 // It then calls parseFileAsFloat to get the value and publishes the stat.
 func collectStats(statMap map[string]*prometheus.GaugeVec, cards []path.Entry) error {
-
 	for _, card := range cards {
-		var cardID = filepath.Base(card.AbsolutePath)
+		cardID := filepath.Base(card.AbsolutePath)
 
 		for statName, promStat := range statMap {
-			var value, err = parseFileAsFloat(filepath.Join(card.AbsolutePath, statName))
+			value, err := parseFileAsFloat(filepath.Join(card.AbsolutePath, statName))
 			if err != nil {
 				return err
 			}
@@ -133,8 +130,7 @@ func collectStats(statMap map[string]*prometheus.GaugeVec, cards []path.Entry) e
 
 // parseFileAsFloat reads a given hwmon file and returns its value as a float64.
 func parseFileAsFloat(file string) (float64, error) {
-
-	var b, err = os.ReadFile(file)
+	b, err := os.ReadFile(file) //nolint:gosec
 	if err != nil {
 		//nolint:nilerr
 		return 0, fmt.Errorf("failed to read file %s: %w", file, err)
